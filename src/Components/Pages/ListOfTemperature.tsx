@@ -9,6 +9,9 @@ interface Temperature {
 
 function ListOfTemperature() {
   const [temperatures, setTemperatures] = useState<Temperature[]>([]);
+  const [averageTemperature, setAverageTemperature] = useState<number | null>(
+    null
+  );
 
   useEffect(() => {
     fetch("http://localhost:8080/temperatures")
@@ -22,6 +25,13 @@ function ListOfTemperature() {
           }
         );
         setTemperatures(sortedTemperatures);
+
+        const totalTemperature = sortedTemperatures.reduce(
+          (sum: number, temp: Temperature) => sum + temp.celcius,
+          0
+        );
+        const average = totalTemperature / sortedTemperatures.length;
+        setAverageTemperature(average);
       })
       .catch((error) =>
         console.error("Fel vid hämtning av temperaturer: ", error)
@@ -31,6 +41,11 @@ function ListOfTemperature() {
   return (
     <div>
       <h1>Veckans mätningar</h1>
+      {averageTemperature !== null && (
+        <h2 className="averageTemperature">
+          Medeltemperatur: {averageTemperature.toFixed(2)} °C
+        </h2>
+      )}
       <ul className="temperatureListUl">
         {temperatures.map((temperature) => (
           <li className="temperatureListLi" key={temperature.temperatureId}>
