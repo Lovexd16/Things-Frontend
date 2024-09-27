@@ -35,7 +35,10 @@ function ListOfTemperature() {
         {temperatures.map((temperature) => (
           <li className="temperatureListLi" key={temperature.temperatureId}>
             Temperatur: {temperature.celcius} °C | Tid:{" "}
-            {new Date(temperature.timestamp).toLocaleString()}
+            {new Date(temperature.timestamp).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
           </li>
         ))}
       </ul>
