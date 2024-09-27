@@ -7,3 +7,7 @@
   .temperatureListLi {
     margin-bottom: 10px;
   }
+
+  .averageTemperature {
+    text-decoration: underline;
+  }
