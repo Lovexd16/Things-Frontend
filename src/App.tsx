@@ -1,7 +1,6 @@
 import "./App.css";
 import Start from "./Components/Pages/Start";
 import ListOfTemperature from "./Components/Pages/ListOfTemperature";
-import TemperatureStatistics from "./Components/Pages/TemperatureStatistics";
 import Navigation from "./Components/Navigation";
 import { useEffect, useState } from "react";
 
@@ -32,7 +31,6 @@ function App() {
 
       {{
         start: <Start />,
-        temperaturestatistics: <TemperatureStatistics />,
         listoftemperature: <ListOfTemperature />,
       }[page] || <Start />}
     </>
