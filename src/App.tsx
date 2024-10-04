@@ -26,7 +26,7 @@ function App() {
 
   return (
     <>
-      <h1>Temperatur i Loves rum</h1>
+      <h1>Temperaturmätning</h1>
       <Navigation setPage={setPage} />
 
       {{
